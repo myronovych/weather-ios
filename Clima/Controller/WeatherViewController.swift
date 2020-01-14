@@ -49,8 +49,12 @@ class WeatherViewController: UIViewController, UITextFieldDelegate, WeatherManag
         
     }
     
-    func didUpdateWeather(weather: WeatherModel){
+    func didUpdateWeather(_ weatherManager: WeatherManager, weather: WeatherModel){
         print(weather.conditionID)
+    }
+    
+    func didEndWithError(error: Error) {
+        print(error)
     }
 }
 

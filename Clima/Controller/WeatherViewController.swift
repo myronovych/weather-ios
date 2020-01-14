@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WeatherViewController: UIViewController, UITextFieldDelegate, WeatherManagerDelegate {
+class WeatherViewController: UIViewController{
     
     var weatherManager = WeatherManager()
     
@@ -23,6 +23,9 @@ class WeatherViewController: UIViewController, UITextFieldDelegate, WeatherManag
         searchField.delegate = self
     }
     
+}
+
+extension WeatherViewController: UITextFieldDelegate{
     @IBAction func searchPressed(_ sender: UIButton) {
         searchField.endEditing(true)
         print(searchField.text!)
@@ -48,7 +51,9 @@ class WeatherViewController: UIViewController, UITextFieldDelegate, WeatherManag
         searchField.text = ""
         
     }
-    
+}
+
+extension WeatherViewController: WeatherManagerDelegate {
     func didUpdateWeather(_ weatherManager: WeatherManager, weather: WeatherModel){
         DispatchQueue.main.async {
             self.temperatureLabel.text = weather.temp
@@ -61,4 +66,3 @@ class WeatherViewController: UIViewController, UITextFieldDelegate, WeatherManag
         print(error)
     }
 }
-

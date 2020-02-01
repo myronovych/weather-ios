@@ -89,13 +89,25 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m8S-Zz-P5q">
-                                        <rect key="frame" x="328" y="355.5" width="46" height="462.5"/>
-                                        <state key="normal" title="Button"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0ti-bh-8Fw">
+                                        <rect key="frame" x="134" y="355.5" width="240" height="417.5"/>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hat-FG-1ur">
+                                        <rect key="frame" x="339" y="785.5" width="35" height="29.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="35" id="AAI-ga-pcO"/>
+                                            <constraint firstAttribute="height" constant="35" id="MyB-f3-fIE"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                        <state key="normal" backgroundImage="list.bullet" catalog="system"/>
+                                        <connections>
+                                            <action selector="savedCititesPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2hd-mJ-RqE"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="m8S-Zz-P5q" secondAttribute="bottom" constant="10" id="96y-A5-q8U"/>
+                                    <constraint firstAttribute="trailing" secondItem="Hat-FG-1ur" secondAttribute="trailing" id="3Yb-2S-pGv"/>
+                                    <constraint firstAttribute="bottom" secondItem="Hat-FG-1ur" secondAttribute="bottom" id="HUd-d1-ey8"/>
                                     <constraint firstAttribute="trailing" secondItem="Tgv-vV-Mot" secondAttribute="trailing" id="Xxe-YD-sFY"/>
                                     <constraint firstItem="Tgv-vV-Mot" firstAttribute="leading" secondItem="Wz9-jj-JbA" secondAttribute="leading" id="zMA-9O-gQ7"/>
                                 </constraints>
@@ -119,15 +131,44 @@
                         <outlet property="conditionImageView" destination="mYn-vV-MBC" id="gpD-FU-YB0"/>
                         <outlet property="searchField" destination="2eh-wL-W34" id="jjW-DO-JFs"/>
                         <outlet property="temperatureLabel" destination="w9o-tW-03D" id="mF4-vV-JxK"/>
+                        <segue destination="UJ8-gq-nlE" kind="showDetail" identifier="goToSavedCities" id="yij-db-Hw3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137.68115942028987" y="117.85714285714285"/>
+            <point key="canvasLocation" x="139" y="118"/>
+        </scene>
+        <!--Saved Cities Controller-->
+        <scene sceneID="aPh-Ao-z1n">
+            <objects>
+                <viewController id="UJ8-gq-nlE" customClass="SavedCitiesController" customModule="Clima" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZUC-Y0-zII">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="PEf-Ub-2FV">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="PEf-Ub-2FV" firstAttribute="leading" secondItem="ZUC-Y0-zII" secondAttribute="leading" id="k3B-iQ-hDZ"/>
+                            <constraint firstAttribute="bottom" secondItem="PEf-Ub-2FV" secondAttribute="bottom" id="nr9-8q-lQd"/>
+                            <constraint firstAttribute="trailing" secondItem="PEf-Ub-2FV" secondAttribute="trailing" id="rqt-S7-6OK"/>
+                            <constraint firstItem="PEf-Ub-2FV" firstAttribute="top" secondItem="ZUC-Y0-zII" secondAttribute="top" id="sIx-gL-7sO"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6hr-ag-A0X"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Gue-ML-THt"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1B1-nI-MAM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1027.536231884058" y="112.5"/>
         </scene>
     </scenes>
     <resources>
         <image name="background" width="662" height="662"/>
+        <image name="list.bullet" catalog="system" width="64" height="44"/>
         <image name="location.circle.fill" catalog="system" width="64" height="60"/>
         <image name="magnifyingglass" catalog="system" width="64" height="56"/>
         <image name="sun.max" catalog="system" width="64" height="62"/>

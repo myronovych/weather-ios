@@ -3,10 +3,10 @@
 //  Clima
 //
 //  Created by Myronovych Sasha on 07.12.2019.
-//  Copyright © 2019 App Brewery. All rights reserved.
 //
 
 import Foundation
+import CoreLocation
 
 protocol WeatherManagerDelegate {
     func didUpdateWeather(_ weatherManager: WeatherManager, weather: WeatherModel)
@@ -14,12 +14,17 @@ protocol WeatherManagerDelegate {
 }
 
 struct WeatherManager {
-    let weatherURL = "https://api.openweathermap.org/data/2.5/weather?appid=49687861f04b11f634f7849aacbc5bc5&units=metric&q="
+    let weatherURL = "https://api.openweathermap.org/data/2.5/weather?appid=49687861f04b11f634f7849aacbc5bc5&units=metric"
     
     var delagate: WeatherManagerDelegate?
     
     func getCityWeather(city: String){
-        let weatherString = weatherURL + (city)
+        let weatherString = weatherURL + "&q=" + (city)
+        performRequest(url: weatherString)
+    }
+    
+    func getCityWeather(latitude: CLLocationDegrees, longitude: CLLocationDegrees){
+        let weatherString = "\(weatherURL)&lat=\(latitude)&lon=\(longitude)"
         performRequest(url: weatherString)
     }
     

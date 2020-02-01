@@ -1,28 +1,31 @@
-//
-//  ViewController.swift
-//  Clima
-//
-//  Created by Angela Yu on 01/09/2019.
-//  Copyright © 2019 App Brewery. All rights reserved.
-//
 
 import UIKit
+import CoreLocation
 
 class WeatherViewController: UIViewController{
     
     var weatherManager = WeatherManager()
+    var locationManager = CLLocationManager()
     
     @IBOutlet weak var conditionImageView: UIImageView!
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var searchField: UITextField!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.requestLocation()
         weatherManager.delagate = self
         searchField.delegate = self
     }
     
+       @IBAction func locationWeather(_ sender: UIButton) {
+        locationManager.requestLocation()
+       }
+ 
 }
 
 extension WeatherViewController: UITextFieldDelegate{
@@ -65,4 +68,20 @@ extension WeatherViewController: WeatherManagerDelegate {
     func didEndWithError(error: Error) {
         print(error)
     }
+}
+
+extension WeatherViewController: CLLocationManagerDelegate{
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+           print(error)
+       }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.last{
+        locationManager.stopUpdatingLocation()
+            let lat = location.coordinate.latitude
+            let long = location.coordinate.longitude
+            weatherManager.getCityWeather(latitude: lat, longitude: long)
+        }
+}
+
 }

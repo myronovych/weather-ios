@@ -15,12 +15,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="gKX-as-Uqg" userLabel="back">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="gKX-as-Uqg" userLabel="back">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="gKX-as-Uqg" secondAttribute="bottom" id="hMp-3u-WHB"/>
+                            <constraint firstItem="gKX-as-Uqg" firstAttribute="leading" secondItem="nN8-CP-3tx" secondAttribute="leading" id="pF1-Pi-HlG"/>
+                            <constraint firstItem="gKX-as-Uqg" firstAttribute="top" secondItem="nN8-CP-3tx" secondAttribute="top" id="qw2-m4-4Vx"/>
+                            <constraint firstItem="gKX-as-Uqg" firstAttribute="trailing" secondItem="nN8-CP-3tx" secondAttribute="trailing" id="qyD-wA-iRT"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="1DT-bL-nK2"/>
                     </view>
                 </viewController>

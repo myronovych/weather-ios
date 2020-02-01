@@ -13,6 +13,11 @@ protocol WeatherManagerDelegate {
     func didEndWithError(error: Error)
 }
 
+protocol WeatherManagerDelegateCell {
+    func didUpdateWeather(_ weatherManager: WeatherManager, weather: WeatherModel)->WeatherModel
+    func didEndWithError(error: Error)
+}
+
 struct WeatherManager {
     let weatherURL = "https://api.openweathermap.org/data/2.5/weather?appid=49687861f04b11f634f7849aacbc5bc5&units=metric"
     

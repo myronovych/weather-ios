@@ -138,10 +138,10 @@
             </objects>
             <point key="canvasLocation" x="139" y="118"/>
         </scene>
-        <!--Saved Cities Controller-->
+        <!--Cities List Screen-->
         <scene sceneID="aPh-Ao-z1n">
             <objects>
-                <viewController id="UJ8-gq-nlE" customClass="SavedCitiesController" customModule="Clima" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="UJ8-gq-nlE" customClass="CitiesListScreen" customModule="Clima" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZUC-Y0-zII">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -149,9 +149,44 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="PEf-Ub-2FV">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                             </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EMq-tv-1iw">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EMq-tv-1iw">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CityCell" id="8pi-ye-D85" customClass="CityCellTableViewCell" customModule="Clima" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="70"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8pi-ye-D85" id="401-AB-qgP">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CITY" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vat-Hz-Phm">
+                                                    <rect key="frame" x="30" y="24.5" width="37.5" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8jX-Kx-tiX">
+                                                    <rect key="frame" x="332" y="24.5" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="8jX-Kx-tiX" firstAttribute="centerY" secondItem="401-AB-qgP" secondAttribute="centerY" id="Fq1-h7-CAE"/>
+                                                <constraint firstItem="vat-Hz-Phm" firstAttribute="leading" secondItem="401-AB-qgP" secondAttribute="leadingMargin" constant="10" id="Y5e-Ue-Y4j"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="8jX-Kx-tiX" secondAttribute="trailing" constant="20" id="i3O-9m-RuP"/>
+                                                <constraint firstItem="vat-Hz-Phm" firstAttribute="centerY" secondItem="401-AB-qgP" secondAttribute="centerY" id="tFG-RB-xgK"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="cityLabel" destination="vat-Hz-Phm" id="fzb-hj-JJe"/>
+                                            <outlet property="tempLabel" destination="8jX-Kx-tiX" id="9Xz-CV-ijg"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -168,6 +203,9 @@
                         <viewLayoutGuide key="safeArea" id="6hr-ag-A0X"/>
                     </view>
                     <navigationItem key="navigationItem" id="Gue-ML-THt"/>
+                    <connections>
+                        <outlet property="tableView" destination="EMq-tv-1iw" id="dBp-71-Xrx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1B1-nI-MAM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

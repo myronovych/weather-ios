@@ -149,9 +149,17 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="PEf-Ub-2FV">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                             </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EMq-tv-1iw">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="EMq-tv-1iw" secondAttribute="bottom" id="0mc-9V-xPp"/>
+                            <constraint firstItem="6hr-ag-A0X" firstAttribute="trailing" secondItem="EMq-tv-1iw" secondAttribute="trailing" id="Nqk-0t-3kq"/>
+                            <constraint firstItem="EMq-tv-1iw" firstAttribute="leading" secondItem="6hr-ag-A0X" secondAttribute="leading" id="fet-PU-EnT"/>
+                            <constraint firstItem="EMq-tv-1iw" firstAttribute="top" secondItem="6hr-ag-A0X" secondAttribute="top" id="jrL-jd-xKF"/>
                             <constraint firstItem="PEf-Ub-2FV" firstAttribute="leading" secondItem="ZUC-Y0-zII" secondAttribute="leading" id="k3B-iQ-hDZ"/>
                             <constraint firstAttribute="bottom" secondItem="PEf-Ub-2FV" secondAttribute="bottom" id="nr9-8q-lQd"/>
                             <constraint firstAttribute="trailing" secondItem="PEf-Ub-2FV" secondAttribute="trailing" id="rqt-S7-6OK"/>

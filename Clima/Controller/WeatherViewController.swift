@@ -26,12 +26,9 @@ class WeatherViewController: UIViewController{
         locationManager.requestLocation()
        }
 
-    
     @IBAction func savedCititesPressed(_ sender: UIButton) {
         self.performSegue(withIdentifier: "goToSavedCities", sender: self)
     }
-    
-    
 }
 
 extension WeatherViewController: UITextFieldDelegate{

@@ -17,6 +17,6 @@ class CityCellTableViewCell: UITableViewCell {
     func setCityWeather(city: WeatherModel){
         cityLabel.text = city.cityName
         tempLabel.text = city.temp
-        
     }
 }
+

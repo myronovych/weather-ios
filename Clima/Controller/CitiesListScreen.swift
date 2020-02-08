@@ -13,22 +13,17 @@ class CitiesListScreen: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var cities: [WeatherModel] = []
+    var cities: [String] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         cities = createCities()
         tableView.delegate = self
         tableView.dataSource = self
+        weatherManager.delegate = self
     }
     
-    func createCities()->[WeatherModel]{
-        var cities: [WeatherModel] = []
-        let city1 = WeatherModel(weatherID: 202,temperature: 2,cityName: "Kiev")
-        let city2 = WeatherModel(weatherID: 202,temperature: 3,cityName: "Pivo")
-        let city3 = WeatherModel(weatherID: 202,temperature: 4,cityName: "Lviv")
-        cities.append(city1)
-        cities.append(city2)
-        cities.append(city3)
+    func createCities()->[String]{
+        let cities: [String] = ["Kyiv","Lviv","London"]
         return cities
     }
 }
@@ -41,13 +36,24 @@ extension CitiesListScreen: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let city = cities[indexPath.row ]
+        let city: String = cities[indexPath.row]
+        weatherManager.getCityWeather(city: city)
         let cell = tableView.dequeueReusableCell(withIdentifier: "CityCell") as! CityCellTableViewCell
-        cell.setCityWeather(city: city)
+        
         return cell
     }
     
     
 }
 
-
+extension CitiesListScreen: WeatherManagerDelegateCell {
+    func didUpdateWeather(_ weatherManager: WeatherManager, weather: WeatherModel, cityCell: CityCellTableViewCell){
+        DispatchQueue.main.async {
+            cityCell.setCityWeather(city: weather)
+        }
+    }
+    
+    func didEndWithError(error: Error) {
+        print(error)
+    }
+}

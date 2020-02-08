@@ -14,7 +14,7 @@ protocol WeatherManagerDelegate {
 }
 
 protocol WeatherManagerDelegateCell {
-    func didUpdateWeather(_ weatherManager: WeatherManager, weather: WeatherModel)->WeatherModel
+    func didUpdateWeather(_ weatherManager: WeatherManager, weather: WeatherModel, cityCell: CityCellTableViewCell)
     func didEndWithError(error: Error)
 }
 
@@ -22,7 +22,7 @@ struct WeatherManager {
     let weatherURL = "https://api.openweathermap.org/data/2.5/weather?appid=49687861f04b11f634f7849aacbc5bc5&units=metric"
     
     var delagate: WeatherManagerDelegate?
-    
+    var delegate: WeatherManagerDelegateCell?
     func getCityWeather(city: String){
         let weatherString = weatherURL + "&q=" + (city)
         performRequest(url: weatherString)
@@ -39,11 +39,13 @@ struct WeatherManager {
             let task = session.dataTask(with: url) { (data, response, error) in
                 if error != nil {
                     self.delagate?.didEndWithError(error: error!)
+                    self.delegate?.didEndWithError(error: error!)
                     return
                 }
                 if let safeData = data {
                     if let weather = self.parseJSON(weatherData: safeData){
-                        self.delagate?.didUpdateWeather(self, weather: weather)
+                        self.delegate?.didUpdateWeather(self, weather: weather, cityCell: <#CityCellTableViewCell#>)
+                            self.delagate?.didUpdateWeather(self, weather: weather)
                     }
                 }
             }
